@@ -4,8 +4,7 @@ import subprocess
 import time
 import logging
 import os
-import shutil
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 class Bot:
     def __init__(self, server_url: str, token: str, raspberry_id: str):
@@ -64,10 +63,8 @@ class Bot:
         
         self.logger.info(f"Ejecutando comando ID {command_id}: {command_name}")
         
-        # Buscar el método correspondiente al comando
         if command_name in self.commands:
             try:
-                # Ejecutar el método correspondiente
                 result = self.commands[command_name]()
                 success = True
                 self.logger.info(f"Comando {command_id} ejecutado exitosamente")
@@ -80,7 +77,6 @@ class Bot:
             success = False
             self.logger.warning(f"Comando no reconocido: {command_name}")
         
-        # Enviar resultado al servidor
         self._send_command_result(command_id, result, success)
 
     def _send_command_result(self, command_id: str, result: str, success: bool) -> None:
@@ -163,17 +159,17 @@ class Bot:
             
             return f"""Estado del sistema:
             
-Memoria:
-{memoria}
+                Memoria:
+                {memoria}
 
-Disco:
-{disco}
+                Disco:
+                {disco}
 
-Uptime:
-{uptime}
+                Uptime:
+                {uptime}
 
-Temperatura:
-{temperatura}"""
+                Temperatura:
+                {temperatura}"""
             
         except Exception as e:
             return f"Error obteniendo estado del sistema: {str(e)}"
@@ -227,12 +223,11 @@ Temperatura:
         except Exception as e:
             return f"Error creando respaldo: {str(e)}"
 
-    # Añade más métodos aquí según tus necesidades
 
 # =============================================================================
-# CONFIGURACIÓN - MODIFICA ESTOS VALORES CON LOS TUYOS
+# INICIALIZACION
 # =============================================================================
-SERVER_URL = "http://localhost:8000/api/bot"  # o "https://api.visiportal.com/bot"
+SERVER_URL = "http://localhost:8000/api/bot"
 SERVER_TOKEN = "auth_token_here"
 RASPBERRY_ID = "raspberry_id_here"
 # =============================================================================
