@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Custom user model
 AUTH_USER_MODEL = 'accounts.User'
@@ -28,7 +32,7 @@ SECRET_KEY = 'django-insecure-1_)*$xi)*7ybbyu^6=d67=56nt@d7hatv0(6g2ysu4h&h95aih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', env('hostname')]
 
 
 # Application definition

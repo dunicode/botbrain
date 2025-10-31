@@ -5,3 +5,4 @@ sudo mkdir /var/log/celery
 sudo cp botbrain.conf /etc/supervisor/conf.d/
 sudo supervisorctl reread
 sudo supervisorctl update
+sudo supervisorctl restart botbrain-gunicorn
