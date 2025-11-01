@@ -71,7 +71,7 @@ class PendingCommandView(APIView):
 
             serializer = CommandResponseSerializer({
                 'id': pending_command.id,
-                'command': pending_command.command.comm
+                'command': pending_command.command.slug
             })
 
             # Marcar como enviado
