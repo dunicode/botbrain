@@ -3,7 +3,6 @@ from django.db import models
 class Command(models.Model):
 	name = models.CharField(max_length=80)
 	slug = models.CharField(max_length=80, unique=True)
-	comm = models.TextField(unique=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
