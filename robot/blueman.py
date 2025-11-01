@@ -19,7 +19,6 @@ class Bot:
             "estado_sistema": self.estado_sistema,
             "reiniciar_servicios": self.reiniciar_servicios,
             "crear_respaldo": self.crear_respaldo,
-            # Añade más comandos aquí
         }
 
     def _setup_logging(self):
