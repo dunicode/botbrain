@@ -5,13 +5,13 @@ from .models import User
 
 class CustomUserAdmin(UserAdmin):
     # Campos a mostrar en la lista del admin
-    list_display = ('email', 'username', 'phone_number', 'is_staff', 'is_active', 'created_at')
+    list_display = ('email', 'username', 'is_staff', 'is_active', 'created_at')
     list_filter = ('is_staff', 'is_active', 'groups', 'created_at')
     
     # Campos para la edición (sin los campos auto)
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password')}),
-        ('Información personal', {'fields': ('first_name', 'last_name', 'phone_number')}),
+        ('Información personal', {'fields': ('first_name', 'last_name')}),
         ('Permisos', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Fechas del sistema', {'fields': ('last_login', 'date_joined')}),
     )
@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'password1', 'password2', 'phone_number'),
+            'fields': ('email', 'username', 'password1', 'password2'),
         }),
     )
     
